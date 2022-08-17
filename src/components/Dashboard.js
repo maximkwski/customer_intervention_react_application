@@ -1,26 +1,19 @@
+import userEvent from '@testing-library/user-event';
 import React, {useState, useEffect} from 'react';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { FloatingLabel } from 'react-bootstrap';
-import axios from 'axios';
+import { Routes, route } from "react-router-dom";
 
-function Dashboard({Logout}) {
-  
+/*  */
 
+
+function Dashboard({ Logout, user }) {
   return (
-    <>
-        <Form.Select size="lg">
-            
-        </Form.Select>
-        <FloatingLabel
-        controlId="floatingTextarea"
-        label="Comments"
-        className="mb-3"
-      >
-        <Form.Control as="textarea" placeholder="Leave a comment here" />
-      </FloatingLabel>
-    </>
+   <div>
+       <h2>Welcome,<span>{user.email}</span></h2>
+       <button onClick={Logout}>Logout</button>
+    </div>
   )
+  
 }
 
 export default Dashboard
+ 

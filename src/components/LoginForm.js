@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Routes, route } from "react-router-dom";
 
 function LoginForm({ Login, failedLogin }) {
    const [details, setDetails] = useState({name: "", email: "", password: ""});
@@ -13,7 +14,7 @@ function LoginForm({ Login, failedLogin }) {
     <form onSubmit={submitHandler}>
         <div className="form-inner">
             <h2>Login</h2>
-            {failedLogin && <p>Failed Login</p>}
+            {failedLogin && <p>Details do not match!</p>}
             <div className="form-group">
                 <label htmlFor="email">Email:</label>
                 <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
