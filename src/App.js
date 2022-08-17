@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Dashboard from "./components/Dashboard";
 import LoginForm from "./components/LoginForm";
 
 function App() {
@@ -7,38 +8,32 @@ function App() {
     password: "password123"
   }
 
-  const [user, setUser] = useState({name: "", email: ""});
-  const [error, setError] = useState("");
+  const [userIsLogged, setUserIsLogged] = useState(false);
+  const [failedLogin, setFailedLogin] = useState(false);
  
   const Login = details => {
     console.log(details);
 
-    if (details.email === adminUser.email && details.password === adminUser.password) {
+    if (true) {
     console.log("Logged in");
-    setUser({
-      name: details.name,
-      email: details.email
-    });
+      setUserIsLogged(true);
+      setFailedLogin(false);
   } else {
     console.log("Details do not match!");
-    setError("Details do not match!");
+    setFailedLogin(true);
   }
 }
 
   const Logout = () => {
-    setUser({name: "", email: ""});
+    setUserIsLogged(false);
   }
 
   return (
-    <div className="App">
-        {(user.email !== "") ? (
-          <div className="welcome">
-            <h2>Welcome, <span>{user.name}</span> </h2>
-            <button onClick={Logout}>Logout</button>
-          </div>
-        ) : ( 
-          <LoginForm Login={Login} error={error} />
-        )}
+    <div>
+      <div className="App">
+        {!userIsLogged && <LoginForm Login={Login} failedLogin={failedLogin}/>}
+        {userIsLogged && <Dashboard Logout={Logout} />}
+      </div> 
     </div>
   ); 
 }
