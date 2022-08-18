@@ -20,6 +20,13 @@ input, button {
     background-color: bisque;
 }
 
+.dashboard {
+    height: 100vh;
+    display: block;
+    background-color: bisque;
+}
+
+
 form {
     display: block;
     position: relative;
