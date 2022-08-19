@@ -1,19 +1,21 @@
 import userEvent from '@testing-library/user-event';
 import React, {useState} from 'react';
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import { Button }from 'react-bootstrap';
+import axios from 'axios';
 
 
-function Dashboard( {user, setUser} ) {
+function Dashboard() {
   const navigate = useNavigate();
   const Logout = () => {
-    setUser({email: ""});
     navigate('/login', {replace: true});
   }
+  console.log(localStorage.getItem('customerInfo'));
   return (
    <div className='dashboard'>
-       <h2>Welcome, <span>{user.email}</span></h2>
+       <h2>Welcome, <span>{localStorage.getItem('userEmail')}</span></h2>
        <Link to="/intervention">New Intervention</Link> 
-       <button onClick={Logout}>Logout</button> 
+       <Button onClick={Logout}>Logout</Button>
     </div>
   )
   

@@ -1,46 +1,60 @@
-import React, {useState} from 'react'
-import { Routes, Route, Links, useNavigate } from "react-router-dom";
+import React, {useState, useEffect } from 'react'
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Button, Container, Row, Col }from 'react-bootstrap';
+import axios from 'axios';
+import logo from "../images/R2.png"
 
-function LoginForm( {adminUser, user, setUser }) {
+function LoginForm( ) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const navigate = useNavigate();
-    const [details, setDetails] = useState({name: "", email: "", password: ""});
-    const submitHandler = e => {
+
+    const submitHandler = async e => {
         e.preventDefault();
-        Login(details); 
+        let formData = new FormData();
+        formData.append('email',email)
+        formData.append('password',password)
+        try {
+        const resp = await axios.post('https://java-api.codeboxxtest.xyz/authenticate', formData );
+        localStorage.setItem('user', JSON.stringify(resp.data))
+        localStorage.setItem('userEmail', email);
+
+        //const resp2 = await axios.get('https://java-api.codeboxxtest.xyz/customers/current');
+        //localStorage.setItem('customerInfo', JSON.stringify(resp2.data));
+        console.log(resp)
         navigate('/dashboard', {replace: true});
-    }
-    const Login = details => {
-        console.log(details);
+        } catch (error) {
+          console.warn("[submitHandler] Error:", error)
     
-        if (details.email === adminUser.email && details.password === adminUser.password) {
-        console.log("Logged in");
-          setUser({
-            email: details.email,
-          });
-      } else {
-        console.log("Details do not match!");
+        return null;
       }
     }
 
   return (
-    <div className='App'>
-         <form onSubmit={submitHandler}>
-         <div className="form-inner">
-             <h2>Login</h2>
-             
-             <div className="form-group">
-                 <label htmlFor="email">Email:</label>
-                 <input type="email" name="email" id="email" onChange={e => setDetails({...details, email: e.target.value})} value={details.email}/>
-             </div>
-             <div className="form-group">
-                 <label htmlFor="password">Password:</label>
-                 <input type="password" name="password" id="password" onChange={e => setDetails({...details, password: e.target.value})} value={details.password}/>
-             </div>
-             <input type="submit" value="Login"/>
-         </div>
-     </form> 
-    </div>
+    <>
+        <Container className='mt-5'>
+            <Row className='justify-content-center' >
+                <Col lg={4} md={6} sm={12} className=" text-center " >
+                    <img className='logo-img' src={logo} />
+                    <Form onSubmit={submitHandler}>
+                        <h2>Login</h2>
+                        <Form.Group className="mb-3">
+                            
+                            <Form.Control required type="email" name="email" id="email" placeholder='Email' value={email} onChange={ (e) => setEmail(e.target.value)} />
+                        </Form.Group>
+                        <Form.Group className="mb-3">
+                            
+                            <Form.Control required type="password" name="password" id="password" placeholder='Password' value={password} onChange={ (e) => setPassword(e.target.value)} />
+                        </Form.Group>
+                        <Button variant='danger w-100' type="submit">Login</Button>
+                        
+                    </Form> 
+                </Col>
+                
+          </Row>
+         </Container>
+    </>
   )
 }
 
