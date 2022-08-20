@@ -16,12 +16,12 @@ function LoginForm( ) {
         formData.append('email',email)
         formData.append('password',password)
         try {
-        const resp = await axios.post('https://java-api.codeboxxtest.xyz/authenticate', formData );
+        const resp = await axios.post('/authenticate', formData );
         localStorage.setItem('user', JSON.stringify(resp.data))
         localStorage.setItem('userEmail', email);
 
-        //const resp2 = await axios.get('https://java-api.codeboxxtest.xyz/customers/current');
-        //localStorage.setItem('customerInfo', JSON.stringify(resp2.data));
+        // const resp2 = await axios.get('/customers/current');
+        // localStorage.setItem('customerInfo', JSON.stringify(resp2.data));
         console.log(resp)
         navigate('/dashboard', {replace: true});
         } catch (error) {
