@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Routes, Route , Link} from "react-router-dom";
 import { Form, FloatingLabel, Button, Container, Row, Col}from 'react-bootstrap';
 import axios from 'axios';
-import logo from "./images/R2.png"
+import logo from "./images/R2.png";
 
 function InterventionForm() {
   const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjdXN0b21lcjFAYnVzaW5lc3MuY29tIiwiaXNzIjoiaHR0cHM6Ly9qYXZhLWFwaS5jb2RlYm94eHRlc3QueHl6L2F1dGhlbnRpY2F0ZSJ9.QbJsJ-MZXWieFf_fcAkNWI3S9Skqd-yFVF3S2h-uhfo";
@@ -20,10 +20,6 @@ function InterventionForm() {
         'Authorization': `Bearer ${token}`,
     };
     
- 
-    // const resp2 = axios.get('/customers/current', { headers })
-    // .then(response => setCurrentCustomer(response.data));
-    // localStorage.setItem('customerInfo', JSON.stringify(resp2.data));
 
     axios.get('/buildings', { headers })
       .then(response => setBuildingData(response.data));
@@ -33,7 +29,7 @@ function InterventionForm() {
       .then(response => setColumnsData(response.data));
     axios.get('/elevators', { headers })
       .then(response => setElevatorsData(response.data));  
-    }, []);
+    }, []); 
 
     // const currentCustomerId = currentCustomer.((customer) =>
     // <option key={customer.id} value={customer.id}>{customer.contact_name}</option>
