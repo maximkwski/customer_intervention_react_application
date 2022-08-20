@@ -60,7 +60,7 @@ function Dashboard() {
   return (
     <Container className='mt-5'>
       <Row className='justify-content-center' >
-        <Col lg={4} md={6} sm={12} className=" text-center " >  
+        <Col lg={12} md={12} sm={12} className=" text-center " >  
           <div className='dashboard'>
              <h2>Welcome, <span>{localStorage.getItem('userEmail')}</span></h2>
              <p></p>
