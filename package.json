@@ -1,7 +1,7 @@
 {
   "proxy": "https://java-api.codeboxxtest.xyz",
   "name": "customer_intervention_react_application",
-  "homepage": "https://maximkwski.github.io/customer_intervention_react_application/",
+  "homepage": "https://maximkwski.github.io/customer_intervention_react_application/login",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
