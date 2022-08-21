@@ -1,7 +1,6 @@
 {
   "proxy": "https://java-api.codeboxxtest.xyz",
   "name": "customer_intervention_react_application",
-  "homepage": "https://github.com/maximkwski/customer_intervention_react_application/login",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -18,7 +17,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
