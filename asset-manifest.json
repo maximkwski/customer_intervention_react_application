@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/customer_intervention_react_application/static/css/main.05760452.css",
-    "main.js": "/customer_intervention_react_application/static/js/main.5f30de7c.js",
-    "static/media/R2.png": "/customer_intervention_react_application/static/media/R2.ba2ba40bea83cff23555.png",
-    "index.html": "/customer_intervention_react_application/index.html",
-    "main.05760452.css.map": "/customer_intervention_react_application/static/css/main.05760452.css.map",
-    "main.5f30de7c.js.map": "/customer_intervention_react_application/static/js/main.5f30de7c.js.map"
+    "main.css": "/customer_intervention_react_application/login/static/css/main.05760452.css",
+    "main.js": "/customer_intervention_react_application/login/static/js/main.ef789322.js",
+    "static/media/R2.png": "/customer_intervention_react_application/login/static/media/R2.ba2ba40bea83cff23555.png",
+    "index.html": "/customer_intervention_react_application/login/index.html",
+    "main.05760452.css.map": "/customer_intervention_react_application/login/static/css/main.05760452.css.map",
+    "main.ef789322.js.map": "/customer_intervention_react_application/login/static/js/main.ef789322.js.map"
   },
   "entrypoints": [
     "static/css/main.05760452.css",
-    "static/js/main.5f30de7c.js"
+    "static/js/main.ef789322.js"
   ]
 }
