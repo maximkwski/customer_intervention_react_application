@@ -13,6 +13,8 @@ function InterventionForm() {
   const [elevatorsData, setElevatorsData] = useState([]);
   const [currentCustomer, setCurrentCustomer] = useState([]);
 
+  const headers = {'Authorization': `Bearer ${token}`};
+
   useEffect(() => {
     axios.get('/buildings/current', { headers })
       .then(response => setBuildingData(response.data));
@@ -24,13 +26,6 @@ function InterventionForm() {
       .then(response => setElevatorsData(response.data));  
     }, []);
     
-    const headers = {
-      'Authorization': `Bearer ${token}`,
-  };
-
-    // const currentCustomerId = currentCustomer.((customer) =>
-    // <option key={customer.id} value={customer.id}>{customer.contact_name}</option>
-    // ); 
     const listBuildings = buildingData.map((building) =>
     <option key={building.id} value={building.id}>{building.address}</option>
     ); 
@@ -44,10 +39,35 @@ function InterventionForm() {
     <option key={elevator.id} value={elevator.id}>{elevator.id}</option>
     ); 
   
+    let formData = {
+      "customerID": 0,
+      "buildingID": 0,
+      "batteryID": 0,
+      "columnID": 0,
+      "elevatorID": 0,
+      "report": "string"
+    } 
+
+    let selectedBuilding = e => {
+      formData.buildingID=e.target.value;
+    }
+    let selectedBattery = e => {
+      formData.batteryID=e.target.value;
+    }
+    let selectedColumn = e => {
+      formData.columnID=e.target.value;
+    }
+    let selectedElevator = e => {
+      formData.elevatorID=e.target.value;
+    }
+    let selectedtext = e => {
+      formData.report=e.target.value;
+    }
 
   const SubmitForm = async (e) => {
     e.preventDefault();
     try {
+     
     const resp3 = await axios.get("/customers/current", { headers });
     formData.customerID=resp3.data.id;
     console.log('Sending request ', formData);
@@ -58,35 +78,9 @@ function InterventionForm() {
   } catch (error) {
     console.warn("[SubmitForm] Error:", error)
 
-  return null;
-  }
+    return null;
+    }
 
-  }
-
-
-  let selectedBuilding = e => {
-    formData.buildingID=e.target.value;
-  }
-  let selectedBattery = e => {
-    formData.batteryID=e.target.value;
-  }
-  let selectedColumn = e => {
-    formData.columnID=e.target.value;
-  }
-  let selectedElevator = e => {
-    formData.elevatorID=e.target.value;
-  }
-  let selectedtext = e => {
-    formData.report=e.target.value;
-  }
-  
-  let formData = {
-    "customerID": 0,
-    "buildingID": 0,
-    "batteryID": 0,
-    "columnID": 0,
-    "elevatorID": 0,
-    "report": "string"
   }
 
   return (
